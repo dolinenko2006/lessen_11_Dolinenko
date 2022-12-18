@@ -5,15 +5,16 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    info_candidate = '<br>'
-    for candidate in get_candidates():
-       #info_candidate += f"<img src={candidate['picture']}>" '<br>'
-        info_candidate += str(candidate["position"]) + '<br>' # тоже что '\n'
-        info_candidate += candidate["name"] + '<br>'
-        info_candidate += candidate["skills"] + '<br>''<br>'
-
-    #return f"<pre>{info_candidate}</pre>"
-    return render_template("list.html", value=info_candidate)
+    candidates = get_candidates()
+    # info_candidate = '<br>'
+    # for candidate in get_candidates():
+    #    #info_candidate += f"<img src={candidate['picture']}>" '<br>'
+    #     info_candidate += str(candidate["position"]) + '<br>' # тоже что '\n'
+    #     info_candidate += candidate["name"] + '<br>'
+    #     info_candidate += candidate["skills"] + '<br>''<br>'
+    #
+    # #return f"<pre>{info_candidate}</pre>"
+    return render_template('list.html', candidates=candidates)
 
 
 @app.route("/candidate/<int:pk>")

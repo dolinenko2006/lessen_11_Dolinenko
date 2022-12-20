@@ -14,54 +14,24 @@ def index():
     #     info_candidate += candidate["skills"] + '<br>''<br>'
     #
     # #return f"<pre>{info_candidate}</pre>"
-    return render_template('list.html', candidates=candidates)
+    return render_template("list.html", candidates=candidates)
 
 
 @app.route("/candidate/<int:pk>")
 def candidates_by_pk(pk):
     candidate = get_by_pk(pk)
-    if not candidate:
-        return "Кандидат не найден"
+    return render_template("card.html", candidate=candidate)
 
-    results = '<br>'
-    results += candidate["name"] + '<br>'
-    results += str(candidate["position"]) + '<br>'  # тоже что <br>
-    results += candidate["skills"] + '<br>'
 
-    return f'''
-           <img src="{candidate['picture']}">
-           <pre> {results} </pre>
-           '''
+@app.route("/skill/<skill_name>")
+def candidate_by_skills(skill_name):
+    candidates = get_by_skill(skill_name)
+    return render_template("skill.html", candidates=candidates)
 
-@app.route("/candidate/<skill>")
-def candidate_by_skills(skill):
-    candidates = get_by_skill(skill)
-    if not candidates:
-         return "Кандидат с такими навыками не найден"
-
-    results = "<br>"
-    for candidate in candidates:
-        results += f'''<img src="{candidate['picture']}"> <br>'''
-        results += candidate["name"] + '<br>'
-        results += str(candidate["position"]) + '<br>'
-        results += candidate["skills"] + '<br>'
-
-    return results
-
-@app.route("/name/<name>")
-def candidates_by_name(name):
-    candidates = get_candidates_by_name(name)
-    if not candidates:
-        return "Кандидат с таким именем не найден"
-
-    results = "<br>"
-    for candidate in candidates:
-        results += f'''<img src="{candidate['picture']}"> <br>'''
-        results += candidate["name"] + '<br>'
-        results += str(candidate["position"]) + '<br>'
-        results += candidate["skills"] + '<br>''<br>'
-
-    return results
+@app.route("/search/<candidate_name>")
+def candidates_by_name(candidate_name):
+    candidates = get_candidates_by_name(candidate_name)
+    return render_template("search.html", candidates=candidates)
 
 app.run()
 

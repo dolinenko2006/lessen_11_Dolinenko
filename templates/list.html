@@ -2,12 +2,13 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style_2.css" />
         <title>Все кандидаты</title>
     </head>
     <body>
         <h1>Все кандидаты</h1>
         {% for candidate in candidates %}
-            <p><a href="/candidates/{{candidates.pk}}">{{candidate.name}}</a></p>
+            <p><a href="/candidate/{{candidate.pk}}">{{candidate.name}}</a></p>
         {% endfor %}
 
     </body>

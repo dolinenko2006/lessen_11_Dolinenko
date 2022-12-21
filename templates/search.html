@@ -2,63 +2,7 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <style>
-body {
-    width: 40%;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    color: white;
-    background-color: black;
-    border: 5px solid blueviolet;
-    padding:  0 20px 20px 20px;
-    margin: 50px 400px 50px 400px;
-    border-radius: 25px;
-
-}
-img {
-    border: 5px solid blueviolet;
-    border-radius: 25px;
-
-}
-.button  {
-
-    border: 1px solid blueviolet;
-    padding:  10px ;
-    margin: 10px ;
-    border-radius: 10px;
-    color: white;
-    background: blueviolet;
-    font-family:  Georgia, "Times New Roman", Times, serif;
-}
-h2 {
-    font-weight: bold;
-    text-align: center;
-    font-size: 50px;
-    font-family:  Georgia, "Times New Roman", Times, serif;
-}
-a {
-    color: white;
-}
-p {
-    background-color: green;
-    border-radius: 25px;
-    font-weight: bold;
-    font-family:  Georgia, "Times New Roman", Times, serif;
-    color: white;
-    font-size: 20px;
-    line-height: 2;
-    letter-spacing: 1px;
-    text-align: center;
-
-}
-
-html {
-    background-color: midnightblue;
-}
-
-
-
-}</style>
-
+        <link href="../static/style_2.css" rel="stylesheet">
 <!--        <link rel="stylesheet" type="text/css" href="style_2.css"/>-->
 <!--        <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='style_2.css', v=1)}}">-->
 
@@ -68,7 +12,10 @@ html {
 
         <h1>найдено кандидатов {{candidates|length}}</h1>
             {% for candidate in candidates %}
-                <p><a href="/candidate/{{candidate.pk}}">{{candidate.name}}</a></p>
+        <form action="/candidate/{{candidate.pk}}">
+                   <button class="button"> {{candidate.name}}
+        </form>
+<!--                <p><a href="/candidate/{{candidate.pk}}">{{candidate.name}}</a></p>-->
             {% endfor %}
 
     </body>

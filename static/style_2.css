@@ -12,7 +12,7 @@ body {
 }
 img {
     border: 5px solid blueviolet;
-    border-radius: 25px;
+    border-radius: 15px;
 
 }
 .button {
@@ -29,12 +29,12 @@ img {
 }
 .violet {
     background: blueviolet;
-    border-radius: 25px;
+    border-radius: 15px;
     font-weight: bolder;*/
     font-family:  Georgia, "Times New Roman", Times, serif;
     color: white;
     font-size: 20px;
-    line-height: 2;*/
+    /*line-height: 2;*/
     letter-spacing: 2px;
     text-align: center;*/
 }
